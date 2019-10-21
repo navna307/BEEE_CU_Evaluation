@@ -1,0 +1,36 @@
+const int ledPin = 13;
+const int ledPin1=12;
+const int ldrPin = A0;
+
+void setup() {
+Serial.begin(9600);
+pinMode(ledPin, OUTPUT);
+pinMode(ledPin1, OUTPUT);
+pinMode(ldrPin, INPUT);
+pinMode(7,INPUT);
+pinMode(6,INPUT);
+
+}
+
+void loop() 
+{
+
+int ldrStatus = analogRead(ldrPin);
+ 
+if (ldrStatus <= 200) 
+{
+if(digitalRead(7)==HIGH||digitalRead(6)==HIGH)
+{
+  digitalWrite(ledPin,LOW);
+}
+  
+if(digitalRead(7)==HIGH&&digitalRead(6)==HIGH)
+{
+  digitalWrite(ledPin1,LOW);
+}
+ Serial.print("Its DARK, Turn on the LED : ");
+
+Serial.println(ldrStatus); 
+}
+}
+  
